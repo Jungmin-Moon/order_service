@@ -10,3 +10,18 @@ spring:
     name: order-service
   lifecycle:
     timeout-per-shutdown=phase: 15s
+  r2dbc:
+    username: user
+    password: password
+    url: r2dbc:postgresql://localhost:5432/luckycardshop_order
+    pool:
+      max-create-connection-time: 2s
+      initial-size: 5
+      max-size: 10
+
+# username <-- is for username
+# password <-- is for password
+# url <-- is for the url to the db connection
+# max-create-connection-time <-- represents the max time to wait to get a connection from the pool
+# initial-size <-- is just the initial size of the pool
+# max-size <-- is for the max number of connections to keep in the pool
