@@ -14,8 +14,8 @@ public record Order(
 	@Id
 	Long id,
 	
-	String cardName,
-	Double cardPrice,
+	String name,
+	Double price,
 	Integer quantity,
 	OrderStatus status,
 	
