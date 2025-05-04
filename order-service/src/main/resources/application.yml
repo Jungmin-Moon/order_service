@@ -29,14 +29,14 @@ spring:
       bindings:
         dispatchOrder-in-0:
           destination: order-dispatched
-          group: spring.application.name
+          group: ${spring.application.name}
         acceptedOrder-out-0:
           destination: order-accepted
       rabbit:
         bindings:
           acceptedOrder-out-0:
             producer:
-              transacted: true
+              transacted: true     
   rabbitmq:
     host: localhost
     port: 5672
