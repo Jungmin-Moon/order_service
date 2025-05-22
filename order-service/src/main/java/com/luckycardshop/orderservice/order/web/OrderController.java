@@ -1,5 +1,7 @@
 package com.luckycardshop.orderservice.order.web;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,9 +24,9 @@ public class OrderController {
 		this.orderService = orderService;
 	}
 	
-	@GetMapping
-	public Flux<Order> getAllOrders() {
-		return orderService.getAllOrders();
+	@GetMapping //gets the currently authenticated user as a parameter in a JWT
+	public Flux<Order> getAllOrders(@AuthenticationPrincipal Jwt jwt) {
+		return orderService.getAllOrders(jwt.getSubject()); //extracts the userId from the JWT to use
 	}
 	
 	@PostMapping
